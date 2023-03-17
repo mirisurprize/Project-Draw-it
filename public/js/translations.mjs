@@ -1,4 +1,4 @@
 export default { 
-    en: { saveBtn: "Save", deleteBtn: "Delete", refreshL: "Italiano" },
-    ita: { saveBtn: "Salva", deleteBtn: "Cancella", refreshL:"English" }
+    en: { welcomeTitle:"Welcome to Draw-it!" , saveBtn: "Save", deleteBtn: "Delete", newLanguageBtn: "Italiano" },
+    ita: { welcomeTitle:"Benvenuto Draw-it!" , saveBtn: "Salva", deleteBtn: "Cancella", newLanguageBtn:"English" }
  }

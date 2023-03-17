@@ -34,11 +34,7 @@ function saveDrawing(req,resp,next){
     resp.json({drawingId:drawings.length})
 }   
 
-/*
-server.get("/drawing", startDrawing);
 
-server.delete("/drawing/:index", deleteDrawing);
-server.delete("/drawings", deleteAllDrawings);*/
 
 
 server.listen(server.get("port"), function(){
