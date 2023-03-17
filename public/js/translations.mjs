@@ -1,4 +1,4 @@
 export default { 
-    en: { saveBtn: "save", deleteBtn: "delete", refreshL: "Italiano" },
-    ita: { saveBtn: "salva", deleteBtn: "cancella", refreshL:"English" }
+    en: { saveBtn: "Save", deleteBtn: "Delete", refreshL: "Italiano" },
+    ita: { saveBtn: "Salva", deleteBtn: "Cancella", refreshL:"English" }
  }
