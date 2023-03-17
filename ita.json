@@ -1,4 +1,7 @@
 {
     "welcome": "Benvenuto a Draw-itt!",
-    "start": "Iniziamo a disegnare!"
+    "start": "Iniziamo a disegnare!",
+    "delete": "Cancella disegno",
+    "save": "Salva disegno",
+    "saved": "Disegni salvati"
 }

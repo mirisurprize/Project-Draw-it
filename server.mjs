@@ -1,13 +1,18 @@
-const express = require("express");
+//const express = require("express");
+import express from "express"
 const server = express();
 const port = (process.env.PORT || 8080);
 
-server.set("port",port);
-
+server.set("port", port);
 server.use(express.static("public"));
 
+/*
 server.get("/drawing", startDrawing);
 server.post("/drawing", saveDrawing);
 server.delete("/drawing/:index", deleteDrawing);
-server.delete("/drawings", deleteAllDrawings);
+server.delete("/drawings", deleteAllDrawings);*/
 
+
+server.listen(server.get("port"), function(){
+    console.log("server running", server.get("port"));
+})
