@@ -29,7 +29,7 @@ function getDrawing(req,resp,next){
 }
 
 function saveDrawing(req,resp,next){
-    const drawing = req.body.drawingData
+    const drawing = req.body.drawingData;
     drawings.push(drawing);
     resp.json({drawingId:drawings.length})
 }   
