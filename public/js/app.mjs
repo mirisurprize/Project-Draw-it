@@ -6,7 +6,8 @@ let dictionary = translations[currentLanguage];
 const drawing = document.getElementById("canv");
 const saveBtn = document.getElementById("save");
 const deleteBtn = document.getElementById("delete");
-const newLanguageBtn = document.getElementById("newLanguageBtn")
+const showDrawingBtn = document.getElementById("showDrawingBtn");
+const newLanguageBtn = document.getElementById("newLanguageBtn");
 
 newLanguageBtn.onclick = (e) => {
     swapLanguage();
@@ -16,10 +17,13 @@ saveBtn.onclick = async (e) => {
     await saveDrawing(drawing);
 }
 
-deleteBtn.onclick =async (e) => {
+deleteBtn.onclick = async (e) => {
     await deleteDrawing(drawing);
 }
 
+showDrawingBtn.onclick = async (e) => {
+  await getDrawing(drawing);
+}
 
 
 function swapLanguage(){
@@ -51,16 +55,16 @@ async function saveDrawing(canvasElement){
 
 async function deleteDrawing(canvasElement){
     const drawingData = canvasElement.toDataURL("image/jpeg", 0.7);
-    const drawingId = await deleteData("/drawing",{drawingData})
+    const drawingId = await deleteData("/drawing/:id",{drawingData})
 
-    console.log("/drawing/"+drawingId+"-deleted");
+    console.log("/drawing/:id"+drawingId+"-deleted");
 }
 
 async function getDrawing(canvasElement){
     const drawingData = canvasElement.toDataURL("image/jpeg", 0.7);
-    const drawingId = await deleteData("/drawing",{drawingData})
+    const drawingId = await deleteData("/drawing/id",{drawingData})
 
-    console.log("/drawing/"+drawingId+"-view");
+    console.log("/drawing/:id"+drawingId+"-view");
 }
 
 async function postData(url = "", data = {}) {
