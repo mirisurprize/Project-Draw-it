@@ -1,7 +1,7 @@
 let canv = document.getElementById("canv");
 let ctx = canv.getContext("2d");
 
-document.addEventListener("mouseup", startDrawing);
+document.addEventListener("mouseup",  startDrawing);
 document.addEventListener("mousedown", stopDrawing);
 document.addEventListener("mousemove", currentlydraw);
 
@@ -20,6 +20,7 @@ function startDrawing(e){
 
 function stopDrawing(e){
     paint = false;
+    getPos(e);
 }
 
 function currentlydraw(e){
