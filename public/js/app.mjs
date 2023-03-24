@@ -2,7 +2,7 @@ import translations from "./translations.mjs";
 
 let currentLanguage = "en";
 let dictionary = translations[currentLanguage];
-
+let drawingId;
 const drawing = document.getElementById("canv");
 const saveBtn = document.getElementById("save");
 const deleteBtn = document.getElementById("delete");
@@ -18,7 +18,7 @@ saveBtn.onclick = async (e) => {
 }
 
 deleteBtn.onclick = async (e) => {
-    await deleteDrawing(drawing);
+    await deleteDrawing(drawingId);
 }
 
 showDrawingBtn.onclick = async (e) => {
@@ -48,21 +48,23 @@ function refreshUI(){
 
 async function saveDrawing(canvasElement){
     const drawingData = canvasElement.toDataURL("image/jpeg", 0.7);
-    const drawingId = await postData("/drawing",{drawingData});
+    
+    drawingId = await postData("/drawing",drawingData);
 
     console.log("/drawing/"+drawingId);
 }
 
-async function deleteDrawing(canvasElement){
+async function deleteDrawing(drawingID){
     const drawingData = canvasElement.toDataURL("image/jpeg", 0.7);
-    const drawingId = await deleteData("/drawing/:id",{drawingData})
+    await deleteData("/drawing/" + drawingID,{drawingData})
 
-    console.log("/drawing/:id"+drawingId+"-deleted");
+    console.log("/drawing/:id"+drawingID+"-deleted");
+    
 }
 
 async function getDrawing(canvasElement){
     const drawingData = canvasElement.toDataURL("image/jpeg", 0.7);
-    const drawingId = await getData("/drawing/id",{drawingData})
+    const drawingId = await getData("/drawing/" +drawingId,{drawingData})
 
     console.log("/drawing/:id"+drawingId+"-view");
 }
@@ -75,7 +77,7 @@ async function postData(url = "", data = {}) {
         "Content-Type": "application/json",
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
+      body: JSON.stringify({data}) // body data type must match "Content-Type" header
     });
     return response.json(); // parses JSON response into native JavaScript objects
   }

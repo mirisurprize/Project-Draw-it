@@ -1,8 +1,8 @@
 let canv = document.getElementById("canv");
 let ctx = canv.getContext("2d");
 
-document.addEventListener("mouseup",  startDrawing);
 document.addEventListener("mousedown", stopDrawing);
+document.addEventListener("mouseup",  startDrawing);
 document.addEventListener("mousemove", currentlydraw);
 
 let coordinations = {x:0, y:0};
