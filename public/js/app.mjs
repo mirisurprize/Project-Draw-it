@@ -9,6 +9,7 @@ const deleteBtn = document.getElementById("delete");
 const showDrawingBtn = document.getElementById("showDrawingBtn");
 const newLanguageBtn = document.getElementById("newLanguageBtn");
 
+
 newLanguageBtn.onclick = (e) => {
     swapLanguage();
 }
