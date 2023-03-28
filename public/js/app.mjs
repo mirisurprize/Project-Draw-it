@@ -53,7 +53,6 @@ async function saveDrawing(canvasElement){
     console.log("/drawing/"+drawingId);
 }
 
-
 async function deleteDrawing(drawingID){
     const drawingData = canvasElement.toDataURL("image/jpeg", 0.7);
     await deleteData("/drawing/" + drawingID,{drawingData})
@@ -70,43 +69,42 @@ async function getDrawing(canvasElement){
 }
 
 async function postData(url = "", data = {}) {
-    // Default options are marked with *
     const response = await fetch(url, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      method: "POST", 
       headers: {
         "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+        
       },
-      body: JSON.stringify({data}) // body data type must match "Content-Type" header
+      body: JSON.stringify({data}) 
     });
-    return response.json(); // parses JSON response into native JavaScript objects
+    return response.json(); 
   }
 
 
   async function deleteData(url = "", data = {}) {
-    // Default options are marked with *
+    
     const response = await fetch(url, {
-      method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+      method: "DELETE", 
       headers: {
         "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+        
       },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
+      body: JSON.stringify(data),
     });
-    return response.json(); // parses JSON response into native JavaScript objects
+    return response.json(); 
   }
 
   async function getData(url = "", data = {}) {
-    // Default options are marked with *
+    
     const response = await fetch(url, {
-      method: "GET", // *GET, POST, PUT, DELETE, etc.
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
+        
       },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
+      body: JSON.stringify(data), 
     });
-    return response.json(); // parses JSON response into native JavaScript objects
+    return response.json();
   }
 
 refreshUI();

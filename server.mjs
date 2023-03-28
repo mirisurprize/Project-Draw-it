@@ -1,11 +1,10 @@
-//const express = require("express");
 import express from "express"
 import * as pg from "pg"
 const server = express();
 const port = (process.env.PORT || 8080);
 server.use(express.json())  
 
-const {Client} = pg.default; //why in curly brackets
+const {Client} = pg.default; 
 
 const db = process.env.DATABASE_URL || "postgres://draw_it_database_user:jU9TEk08NLtjzLrOsb2y8fdIdIP6AEVR@dpg-cghbnrt269v15ekvmqjg-a.frankfurt-postgres.render.com/draw_it_database";
 const credentials = {
@@ -31,7 +30,7 @@ server.post("/drawing", async function (req, resp) {
     const drawing = req.body.data;
 
     try{
-        client.connect();//open connection to database
+        client.connect();
         const query = 'INSERT INTO public."Drawings"(img) VALUES ($1) RETURNING *';
         const values = [drawing];
         checkResults = await client.query(query,values);
@@ -42,7 +41,7 @@ server.post("/drawing", async function (req, resp) {
         resp.status(500).json({message: "Could't save drawing"});
     } finally {
         console.log("Response being sent back to client", resp);//?
-        client.end();//ends connection
+        client.end();
     }
 
     console.log("...")
@@ -97,33 +96,6 @@ server.delete("/drawing/:id",async function(req,resp){
     console.log("...")
 });
 
-
-/*
-function deleteDrawing(req,resp,next){
-
-    let drawingID = req.params.id;
-    if(drawingID <= drawings.length){
-        drawings.splice(drawingID-1,0)
-        resp.status(200).end();
-    }
-
-}*/
-
-/*
-function getDrawing(req,resp,next){
-    let drawingID = req.params.id;
-    if(drawingID <= drawings.length){
-        resp.json({drawingData:drawings[drawingID-1]})
-    }
-}*/
-
- /*
-function saveDrawing(req,resp,next){
-    const drawing = req.body.data;
-    console.log(drawing);
-    drawings.push(drawing);
-    resp.json({drawingId:drawings.length})
-}   */
 
 function updateDrawing(req,resp,next){
     let drawingID = req.params.id;
