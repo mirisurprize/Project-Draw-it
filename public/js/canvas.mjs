@@ -1,4 +1,3 @@
-
 let canv = document.getElementById("canv");
 let ctx = canv.getContext("2d");
 
