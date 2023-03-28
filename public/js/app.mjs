@@ -2,7 +2,7 @@ import translations from "./translations.mjs";
 
 let currentLanguage = "en";
 let dictionary = translations[currentLanguage];
-let drawingId;
+let drawingId = null;
 const drawing = document.getElementById("canv");
 const saveBtn = document.getElementById("save");
 const deleteBtn = document.getElementById("delete");
@@ -49,9 +49,7 @@ function refreshUI(){
 
 async function saveDrawing(canvasElement){
     const drawingData = canvasElement.toDataURL("image/jpeg", 0.7);
-    
     drawingId = await postData("/drawing",drawingData);
-
     console.log("/drawing/"+drawingId);
 }
 
