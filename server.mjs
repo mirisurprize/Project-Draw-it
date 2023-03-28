@@ -1,8 +1,19 @@
 //const express = require("express");
 import express from "express"
+import * as pg from "pg"
 const server = express();
 const port = (process.env.PORT || 8080);
 server.use(express.json())  
+
+const {Client} = pg.default;
+
+const db = process.env.DATABASE_URL;
+const credentials = {
+    connections: db,
+    ssl: {
+        rejectUnauthorized: false
+    }
+}
 
 const drawings = [];
 
