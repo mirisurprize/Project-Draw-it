@@ -1,8 +1,9 @@
+
 let canv = document.getElementById("canv");
 let ctx = canv.getContext("2d");
 
-document.addEventListener("mousedown", stopDrawing);
-document.addEventListener("mouseup",  startDrawing);
+document.addEventListener("mousedown", startDrawing);
+document.addEventListener("mouseup",  stopDrawing);
 document.addEventListener("mousemove", currentlydraw);
 
 let coordinations = {x:0, y:0};
@@ -24,7 +25,8 @@ function stopDrawing(e){
 }
 
 function currentlydraw(e){
-    if(!paint) {
+    if(paint) {
+        
         ctx.beginPath();
         ctx.lineWidth = 5;
         ctx.lineCap = "round";
@@ -37,4 +39,6 @@ function currentlydraw(e){
         ctx.stroke();
         
     }
-}
+};
+
+
