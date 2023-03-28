@@ -63,7 +63,7 @@ async function deleteDrawing(drawingID){
 
 async function getDrawing(canvasElement){
     const drawingData = canvasElement.toDataURL("image/jpeg", 0.7);
-    const drawingId = await getData("/drawing/" +drawingId,{drawingData})
+    const drawingId = await getData("/drawing/" + drawingId,{drawingData})
 
     console.log("/drawing/:id"+drawingId+"-view");
 }

@@ -70,7 +70,7 @@ server.get("/drawing/:id", async function (req, resp){
         client.end();
     }
 
-    console.log()
+    console.log("...")
 });
 
 server.delete("/drawing/:id",async function(req,resp){});
