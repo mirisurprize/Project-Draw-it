@@ -56,7 +56,7 @@ server.get("/drawing/:id", async function (req, resp){
 
     try{
         client.connect();
-        const query = 'SELECT * FROM PUBLIC."Drawings"'
+        const query = 'SELECT * FROM public."Drawings" WHERE Id < 0';
         const values = [drawings];
         checkResults = await client.query(query,values);
         console.log("The result of the query: ", checkResults);
@@ -73,7 +73,29 @@ server.get("/drawing/:id", async function (req, resp){
     console.log("...")
 });
 
-server.delete("/drawing/:id",async function(req,resp){});
+server.delete("/drawing/:id",async function(req,resp){
+    console.log("Drawing deleted!");
+    const client = new Client(credentials);
+    let checkResults = null;
+    const drawing = req.id;
+
+    try{
+        client.connect();
+        const query = 'DELETE * FROM public."Drawings" WHERE Id < 0';
+        const values = [drawings];
+        checkResults = await client.query(query,values);
+        console.log("The result of the query: ", checkResults);
+        resp.status(201).json({message:"Drawing deleted!", id:checkResults.rows[0].Id})
+    }catch{
+        console.error("Something went wrong:", error);
+        resp.status(500).json({message:"Couldn't show drawing"});
+    } finally {
+        console.log("Response is being sent back to client", resp);
+        client.end();
+    }
+
+    console.log("...")
+});
 
 
 /*

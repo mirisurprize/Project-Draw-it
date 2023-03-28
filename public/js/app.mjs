@@ -53,6 +53,7 @@ async function saveDrawing(canvasElement){
     console.log("/drawing/"+drawingId);
 }
 
+
 async function deleteDrawing(drawingID){
     const drawingData = canvasElement.toDataURL("image/jpeg", 0.7);
     await deleteData("/drawing/" + drawingID,{drawingData})
